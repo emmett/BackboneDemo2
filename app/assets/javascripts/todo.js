@@ -2,9 +2,16 @@
 window.App = {
   Collections: {},
   Models: {},
+  Views: {},
 
   initialize: function () {
-    // alert("Welcome to TODOS!");
+    var view = new App.Views.TodosIndex();
+
+    App.Collections.todos.fetch({
+      success: function () {
+        $("body").append(view.render().$el);
+      }
+    });
   }
 };
 
