@@ -19,6 +19,7 @@
 //= require backbone
 //= require todo
 //= require_tree ./models
+//= require_tree ./collections
 
 // We don't need turbolinks where we're going! Also, they will break
 // things in Rails 4 :-)
