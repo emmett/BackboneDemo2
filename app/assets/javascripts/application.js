@@ -12,5 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
-//= require_tree .
+//= require underscore
+//= require backbone
+// We don't need turbolinks where we're going! Also, they will break
+// things in Rails 4 :-)
+// require turbolinks
