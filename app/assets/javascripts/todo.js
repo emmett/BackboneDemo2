@@ -5,15 +5,12 @@ window.App = {
   Views: {},
 
   initialize: function () {
+    App.Collections.todos.fetch();
+
     var view = new App.Views.TodosIndex({
       collection: App.Collections.todos
     });
-
-    App.Collections.todos.fetch({
-      success: function () {
-        $("body").append(view.render().$el);
-      }
-    });
+    $("body").append(view.$el);
   }
 };
 

@@ -4,10 +4,13 @@ App.Views.TodosIndex = Backbone.View.extend({
     "click button.refresh": "refresh"
   },
 
+  initialize: function (options) {
+    this.listenTo(this.collection, "sync app", this.render);
+  },
+
+
   refresh: function () {
-    this.collection.fetch({
-      success: this.render.bind(this)
-    });
+    this.collection.fetch();
   },
 
   render: function () {
