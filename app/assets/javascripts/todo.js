@@ -5,7 +5,9 @@ window.App = {
   Views: {},
 
   initialize: function () {
-    var view = new App.Views.TodosIndex();
+    var view = new App.Views.TodosIndex({
+      collection: App.Collections.todos
+    });
 
     App.Collections.todos.fetch({
       success: function () {

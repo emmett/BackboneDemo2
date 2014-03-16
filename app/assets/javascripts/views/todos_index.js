@@ -1,17 +1,9 @@
 App.Views.TodosIndex = Backbone.View.extend({
+  template: JST["todos/index"],
+
   render: function () {
-    var $ul = $("<ul></ul>");
-
-    App.Collections.todos.each(function (todo) {
-      var $li = $("<li></li>");
-      // TODO: don't use `get` to insert un-escaped user generated
-      // content.
-      $li.text(todo.get("title"));
-
-      $ul.append($li);
-    });
-
-    this.$el.html($ul);
+    var renderedContent = this.template({ todos: this.collection });
+    this.$el.html(renderedContent);
 
     return this;
   }

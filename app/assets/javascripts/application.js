@@ -20,6 +20,10 @@
 //= require todo
 //= require_tree ./models
 //= require_tree ./collections
+// We need templates to required before the views, because JST needs
+// to be defined when we define the view prototype's `template`
+// property.
+//= require_tree ../templates
 //= require_tree ./views
 
 // We don't need turbolinks where we're going! Also, they will break
