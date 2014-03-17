@@ -1,7 +1,8 @@
 App.Routers.AppRouter = Backbone.Router.extend({
   routes: {
     "": "todosIndex",
-    "todos/new": "todosNew"
+    "todos/new": "todosNew",
+    "todos/:id": "todosShow"
   },
 
   todosIndex: function () {
@@ -16,5 +17,16 @@ App.Routers.AppRouter = Backbone.Router.extend({
   todosNew: function () {
     var newView = new App.Views.TodosNew();
     $("body").html(newView.render().$el);
+  },
+
+  todosShow: function (id) {
+    // TODO: this only works if we previously fetched todos! Will fix
+    // later.
+    var todo = App.Collections.todos.get(id);
+    var showView = new App.Views.TodosShow({
+      model: todo
+    });
+
+    $("body").html(showView.render().$el);
   }
 });

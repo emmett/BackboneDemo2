@@ -1,0 +1,10 @@
+<!-- So many gets!! -->
+<h1><%= todo.get("title") %></h1>
+
+<ul>
+  <% comments.each(function (comment) { %>
+    <li><%= comment.get("content") %></li>
+  <% }); %>
+</ul>
+
+<a href="#/">Back to Index</a>

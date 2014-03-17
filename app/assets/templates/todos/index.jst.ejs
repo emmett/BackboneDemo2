@@ -6,7 +6,11 @@
     <!--
         don't use `get` to insert un-escaped user generated content
       -->
-    <li><%= todo.get("title") %></li>
+    <li>
+      <a href="#/todos/<%= todo.id %>">
+        <%= todo.get("title") %>
+      </a>
+    </li>
   <% }); %>
 </ul>
 
