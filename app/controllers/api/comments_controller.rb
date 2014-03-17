@@ -24,6 +24,14 @@ class Api::CommentsController < ApplicationController
     render "show"
   end
 
+  def update
+    @comment = TodoComment.find(params[:id])
+    if @comment.update_attributes(self.comment_params)
+      render "show"
+    else
+      render :json => @comment.errors, :status => :unprocessable_entity
+    end
+
   protected
   def comment_params
     self.params[:comment].permit(:todo_id, :content)
