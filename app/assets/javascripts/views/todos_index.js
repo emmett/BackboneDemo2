@@ -5,7 +5,7 @@ App.Views.TodosIndex = Backbone.View.extend({
   },
 
   initialize: function (options) {
-    this.listenTo(this.collection, "sync app", this.render);
+    this.listenTo(this.collection, "sync add", this.render);
   },
 
 
