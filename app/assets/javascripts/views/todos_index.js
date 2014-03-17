@@ -29,5 +29,13 @@ App.Views.TodosIndex = Backbone.TableView.extend({
     this.attachSubviews();
 
     return this;
+  },
+
+  _titleLowerCase: function (view1, view2) {
+    var val1 = view1.model.get("title").toLowerCase();
+    var val2 = view2.model.get("title").toLowerCase();
+    if (val1 < val2) return -1;
+    if (val1 > val2) return 1;
+    return 0;
   }
 });

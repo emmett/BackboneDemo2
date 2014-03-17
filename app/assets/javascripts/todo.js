@@ -95,19 +95,26 @@ Backbone.TableView = Backbone.CompositeView.extend({
   },
 
   resort: function (event) {
-    this.sortCol = $(event.currentTarget).data("col");
-    this.subviews("tbody").sort(comparator(this.sortCol));
-    this.attachSubviews();
-
-    function comparator (sortCol) {
-      return function (view1, view2) {
-        var val1 = view1.model.get(sortCol);
-        var val2 = view2.model.get(sortCol);
-        if (val1 < val2) return -1;
-        if (val1 > val2) return 1;
-        return 0;
-      };
+    var sortCol = $(event.currentTarget).data("sort-col");
+    if (sortCol) {
+      this.sortFn = this._sortColFn(sortCol);
+    } else {
+      var sortFnName = $(event.currentTarget).data("sort-fn");
+      this.sortFn = this[sortFnName];
     }
+
+    this.subviews("tbody").sort(this.sortFn);
+    this.attachSubviews();
+  },
+
+  _sortColFn: function (sortCol) {
+    return function (view1, view2) {
+      var val1 = view1.model.get(sortCol);
+      var val2 = view2.model.get(sortCol);
+      if (val1 < val2) return -1;
+      if (val1 > val2) return 1;
+      return 0;
+    };
   }
 });
 
