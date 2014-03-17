@@ -1,6 +1,10 @@
 App.Views.TodosShow = Backbone.View.extend({
   template: JST["todos/show"],
 
+  initialize: function () {
+    this.listenTo(this.model, "sync", this.render);
+  },
+
   render: function () {
     // TODO: eventually show some comments!
     var renderedContent = this.template({

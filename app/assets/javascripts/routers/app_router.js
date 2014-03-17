@@ -20,9 +20,7 @@ App.Routers.AppRouter = Backbone.Router.extend({
   },
 
   todosShow: function (id) {
-    // TODO: this only works if we previously fetched todos! Will fix
-    // later.
-    var todo = App.Collections.todos.get(id);
+    var todo = App.Collections.todos.getOrFetch(id);
     var showView = new App.Views.TodosShow({
       model: todo
     });
