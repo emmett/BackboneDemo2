@@ -19,7 +19,10 @@ App.Views.TodosNew = Backbone.View.extend({
     var newTodo = new App.Models.Todo(params["todo"]);
 
     newTodo.save({}, {
-      success: function () { App.Collections.todos.add(newTodo) }
+      success: function () {
+        App.Collections.todos.add(newTodo);
+        Backbone.history.navigate("/", { trigger: true });
+      }
     });
   }
 });
