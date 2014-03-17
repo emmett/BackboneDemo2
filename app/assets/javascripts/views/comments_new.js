@@ -14,7 +14,7 @@ App.Views.CommentsNew = Backbone.View.extend({
 
   renderPreview: function (event) {
     var content = $(event.currentTarget).val();
-    this.$(".preview").html(marked(content));
+    this.$(".preview").html(marked(_.escape(content)));
   },
 
   submit: function (event) {
