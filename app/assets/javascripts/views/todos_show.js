@@ -6,6 +6,9 @@ App.Views.TodosShow = Backbone.CompositeView.extend({
     this.listenTo(
       this.model.comments(), "add", this.addComment
     );
+    this.listenTo(
+      this.model.comments(), "remove", this.removeComment
+    );
 
     var commentNewView =
       new App.Views.CommentsNew({ model: this.model });
@@ -18,6 +21,17 @@ App.Views.TodosShow = Backbone.CompositeView.extend({
     var commentsShow =
       new App.Views.CommentsShow({ model: comment });
     this.addSubview(".comments", commentsShow.render());
+  },
+
+  removeComment: function (comment) {
+    var subview = _.find(
+      this.subviews(".comments"),
+      function (subview) {
+        return subview.model === comment;
+      }
+    );
+
+    this.removeSubview(".comments", subview);
   },
 
   render: function () {
