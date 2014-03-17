@@ -26,6 +26,8 @@ App.Views.CommentsNew = Backbone.View.extend({
     comment.save({}, {
       success: function () {
         view.model.comments().add(comment);
+        // re-render to clear form/preview
+        view.render();
       }
     });
   }
