@@ -4,18 +4,20 @@ App.Views.TodosShow = Backbone.CompositeView.extend({
   initialize: function () {
     this.listenTo(this.model, "sync", this.render);
     this.listenTo(
-      this.model.comments(), "sync add remove", this.render
+      this.model.comments(), "add", this.addComment
     );
-
-//    this.model.comments().each(function (comment) {
-//      var commentsShow =
-//        new App.Views.CommentsShow({ model: comment });
-//      view.addSubview(".comments", commentsShow.render());
-//    });
 
     var commentNewView =
       new App.Views.CommentsNew({ model: this.model });
     this.addSubview(".comments-new", commentNewView.render());
+
+    this.model.comments().each(this.addComment.bind(this));
+  },
+
+  addComment: function (comment) {
+    var commentsShow =
+      new App.Views.CommentsShow({ model: comment });
+    this.addSubview(".comments", commentsShow.render());
   },
 
   render: function () {
