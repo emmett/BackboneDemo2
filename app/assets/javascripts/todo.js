@@ -7,10 +7,13 @@ window.App = {
   initialize: function () {
     App.Collections.todos.fetch();
 
-    var view = new App.Views.TodosIndex({
+    var indexView = new App.Views.TodosIndex({
       collection: App.Collections.todos
     });
-    $("body").append(view.$el);
+    $("body").append(indexView.$el);
+
+    var newView = new App.Views.TodosNew();
+    $("body").append(newView.render().$el);
   }
 };
 
