@@ -3,12 +3,9 @@
 <button class="refresh">Refresh</button>
 <ul>
   <% todos.each(function (todo) { %>
-    <!--
-        don't use `get` to insert un-escaped user generated content
-      -->
     <li>
       <a href="#/todos/<%= todo.id %>">
-        <%= todo.get("title") %>
+        <%= todo.escape("title") %>
       </a>
     </li>
   <% }); %>
