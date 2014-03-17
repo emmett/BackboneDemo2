@@ -2,7 +2,7 @@
 <h1><%= todo.get("title") %></h1>
 
 <ul>
-  <% comments.each(function (comment) { %>
+  <% todo.comments().each(function (comment) { %>
     <li><%= comment.get("content") %></li>
   <% }); %>
 </ul>

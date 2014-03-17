@@ -3,13 +3,12 @@ App.Views.TodosShow = Backbone.View.extend({
 
   initialize: function () {
     this.listenTo(this.model, "sync", this.render);
+    this.listenTo(this.model.comments(), "sync", this.render);
   },
 
   render: function () {
-    // TODO: eventually show some comments!
     var renderedContent = this.template({
-      todo: this.model,
-      comments: _([])
+      todo: this.model
     });
 
     this.$el.html(renderedContent);
