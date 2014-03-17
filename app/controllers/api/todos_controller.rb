@@ -21,6 +21,7 @@ class Api::TodosController < ApplicationController
 
   def show
     @todo = Todo.find(params[:id])
+    @comments = @todo.comments
     render "show"
   end
 
