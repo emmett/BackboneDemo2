@@ -1,13 +1,23 @@
-App.Views.TodosIndex = Backbone.View.extend({
+App.Views.TodosIndexRow = Backbone.View.extend({
+  template: JST["todos/index_row"],
+  tagName: "tr",
+
+  render: function () {
+    var renderedContent = this.template({ todo: this.model });
+    this.$el.html(renderedContent);
+
+    return this;
+  }
+});
+
+App.Views.TodosIndex = Backbone.TableView.extend({
   template: JST["todos/index"],
-  events: {
+
+  events: _.extend({
     "click button.refresh": "refresh"
-  },
+  }, Backbone.TableView.prototype.events),
 
-  initialize: function (options) {
-    this.listenTo(this.collection, "sync add", this.render);
-  },
-
+  rowSubviewClass: App.Views.TodosIndexRow,
 
   refresh: function () {
     this.collection.fetch();
@@ -16,6 +26,7 @@ App.Views.TodosIndex = Backbone.View.extend({
   render: function () {
     var renderedContent = this.template({ todos: this.collection });
     this.$el.html(renderedContent);
+    this.attachSubviews();
 
     return this;
   }
