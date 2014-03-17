@@ -1,10 +1,6 @@
 <h1><%= todo.escape("title") %></h1>
 
-<ul>
-  <% todo.comments().each(function (comment) { %>
-    <li><%= marked(comment.escape("content")) %></li>
-  <% }); %>
-</ul>
+<ul class="comments"></ul>
 
 <div class="comments-new"></div>
 
