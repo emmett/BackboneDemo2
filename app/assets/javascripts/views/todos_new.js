@@ -15,9 +15,8 @@ App.Views.TodosNew = Backbone.View.extend({
   submit: function (event) {
     event.preventDefault();
 
-    var newTodo = new App.Models.Todo({
-      title: this.$('input[name="todo\\[title\\]"]').val()
-    });
+    var params = $(event.currentTarget).serializeJSON();
+    var newTodo = new App.Models.Todo(params["todo"]);
 
     newTodo.save({}, {
       success: function () { App.Collections.todos.add(newTodo) }

@@ -15,6 +15,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.serializeJSON
 //= require underscore
 //= require backbone
 //= require todo
