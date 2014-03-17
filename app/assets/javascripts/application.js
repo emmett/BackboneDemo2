@@ -26,6 +26,7 @@
 // property.
 //= require_tree ../templates
 //= require_tree ./views
+//= require_tree ./routers
 
 // We don't need turbolinks where we're going! Also, they will break
 // things in Rails 4 :-)
