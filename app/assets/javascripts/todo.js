@@ -38,9 +38,9 @@ Backbone.CompositeView = Backbone.View.extend({
     // relevant points in the parent CompositeView.
 
     var view = this;
-    _(this.subviews()).forEach(function (subviews, selector) {
+    _(this.subviews()).each(function (subviews, selector) {
       view.$(selector).empty();
-      subviews.forEach(function (subview) {
+      _(subviews).each(function (subview) {
         view.attachSubview(selector, subview);
       });
     });
