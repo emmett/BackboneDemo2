@@ -31,6 +31,7 @@ class Api::CommentsController < ApplicationController
     else
       render :json => @comment.errors, :status => :unprocessable_entity
     end
+  end
 
   protected
   def comment_params

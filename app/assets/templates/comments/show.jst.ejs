@@ -1,4 +1,6 @@
 <li>
-  <%= marked(comment.escape("content")) %>
+  <div class="content">
+    <%= marked(comment.escape("content")) %>
+  </div>
   <button class="destroy">Destroy</button>
 </li>
