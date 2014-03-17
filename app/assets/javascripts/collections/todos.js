@@ -6,7 +6,9 @@ App.Collections.Todos = Backbone.Collection.extend({
     var todos = this;
 
     var todo;
-    if (!(todo = this.get(id))) {
+    if (todo = this.get(id)) {
+      todo.fetch();
+    } else {
       todo = new App.Models.Todo({ id: id });
       todo.fetch({
         success: function () { todos.add(todo); }
