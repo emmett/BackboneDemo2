@@ -11,6 +11,7 @@ App.Views.CommentsShow = Backbone.View.extend({
 
   initialize: function (options) {
     this.open = false;
+    this.listenTo(this.model, "change", this.render);
   },
 
   beginEditing: function () {
