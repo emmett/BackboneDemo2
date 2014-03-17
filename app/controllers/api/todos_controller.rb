@@ -2,7 +2,7 @@ class Api::TodosController < ApplicationController
   def create
     @todo = Todo.new(self.todo_params)
     if @todo.save
-      render :json => @todo
+      render "show"
     else
       render :json => @todo.errors, :status => :unprocessable_entity
     end
@@ -11,23 +11,23 @@ class Api::TodosController < ApplicationController
   def destroy
     @todo = Todo.find(params[:id])
     @todo.destroy!
-    render :json => @todo
+    render "show"
   end
 
   def index
     @todos = Todo.all
-    render :json => @todos
+    render "index"
   end
 
   def show
     @todo = Todo.find(params[:id])
-    render :json => @todo
+    render "show"
   end
 
   def update
     @todo = Todo.find(params[:id])
     if @todo.update_attributes(self.todo_params)
-      render :json => @todo
+      render "show"
     else
       render :json => @todo.errors, :status => :unprocessable_entity
     end
