@@ -18,6 +18,7 @@
 //= require jquery.serializeJSON
 //= require underscore
 //= require backbone
+//= require marked
 //= require todo
 //= require_tree ./models
 //= require_tree ./collections

@@ -1,7 +1,8 @@
 App.Views.CommentsNew = Backbone.View.extend({
   template: JST["comments/new"],
   events: {
-    "submit form": "submit"
+    "submit form": "submit",
+    "keyup textarea": "renderPreview"
   },
 
   render: function () {
@@ -9,6 +10,11 @@ App.Views.CommentsNew = Backbone.View.extend({
     this.$el.html(renderedContent);
 
     return this;
+  },
+
+  renderPreview: function (event) {
+    var content = $(event.currentTarget).val();
+    this.$(".preview").html(marked(content));
   },
 
   submit: function (event) {
