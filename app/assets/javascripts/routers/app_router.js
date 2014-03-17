@@ -11,12 +11,12 @@ App.Routers.AppRouter = Backbone.Router.extend({
     var indexView = new App.Views.TodosIndex({
       collection: App.Collections.todos
     });
-    $("body").html(indexView.$el);
+    this._swapView(indexView);
   },
 
   todosNew: function () {
     var newView = new App.Views.TodosNew();
-    $("body").html(newView.render().$el);
+    this._swapView(newView);
   },
 
   todosShow: function (id) {
@@ -26,6 +26,16 @@ App.Routers.AppRouter = Backbone.Router.extend({
       model: todo
     });
 
-    $("body").html(showView.render().$el);
+    this._swapView(showView);
+  },
+
+  _swapView: function (newView) {
+    if (this.currentView) {
+      this.currentView.remove();
+    }
+
+    $("body").html(newView.render().$el);
+
+    this.currentView = newView;
   }
 });
